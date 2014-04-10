@@ -76,7 +76,6 @@
     
     self.navigationController.navigationBar.hidden = YES;
     
-    [self startTimer];
     
     [self setupNotificationCenters];
     
@@ -90,34 +89,30 @@
     
     
     //modify the time interval
-    
-    //we will get random number, from 0 to 100
-    NSInteger randomNumber = [self getRandomNumberBetween:0 maxNumber:100];
-    
     float logDivisor = 100;
     
     float averageInterval = (self.lowerBoundInterval + self.upperBoundInterval) / 2;
     
 //    if(self.points >= LEVEL_1 && self.points < LEVEL_2){
-//        
+//
 //        logDivisor = 250;
-//        
+//
 //    } else if (self.points >= LEVEL_2 && self.points < LEVEL_3){
-//        
+//
 //        logDivisor = 500;
-//        
+//
 //    } else if (self.points >= LEVEL_3 && self.points < LEVEL_4){
-//        
+//
 //        logDivisor = 1000;
-//        
+//
 //    } else if (self.points >= LEVEL_4 && self.points < LEVEL_5){
-//        
+//
 //        logDivisor = 2000;
-//        
+//
 //    } else if(self.points >= LEVEL_5){
-//        
+//
 //        logDivisor = 3000;
-//        
+//
 //    }
     
     if(averageInterval <= LEVEL_1 && averageInterval > LEVEL_2){
@@ -188,6 +183,8 @@
     self.fadeMessageLabel.text = @"Swipe Away!!!";
     
     [self fadeAnimation:self.fadeMessageLabel yesFadeInNoFadeOut:NO beginningAlpha:1.0 endingAlpha:0.0 animationDuration:2.0];
+    
+    [self startTimer];
     
 }
 

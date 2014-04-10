@@ -102,7 +102,7 @@
         }
         
         //1% of the time get a golden bar
-        if([self getRandomNumberBetween:0 maxNumber:1000] == 1){
+        if([self getRandomNumberBetween:0 maxNumber:1000] >= 997){
             
             self.isGolden = YES;
             
@@ -111,22 +111,14 @@
         }
         
         //add left swipe text
-        UILabel *yourLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, BAR_WIDTH, BAR_HEIGHT)];
-        
-        [yourLabel setTextColor:[UIColor blackColor]];
-        
-        [yourLabel setBackgroundColor:[UIColor clearColor]];
-        
-        [yourLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
-        
-        yourLabel.textAlignment = NSTextAlignmentCenter;
+        UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(BAR_WIDTH / 4, BAR_HEIGHT / 4, BAR_WIDTH / 2, BAR_HEIGHT / 2)];
         
         UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler)];
         
         if(self.isRightSwipe){
             
             //add rightswipe arrow image
-            yourLabel.text = @"▶︎  ▶︎  ▶︎";
+            arrowImageView.image = [UIImage imageNamed:@"right_arrow_thick.png"];
             
             //add rightswipe gesture
             [gestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
@@ -134,14 +126,14 @@
             
         } else {
         
-            yourLabel.text = @"◀︎  ◀︎  ◀︎";
+            arrowImageView.image = [UIImage imageNamed:@"left_arrow_thick.png"];
             
             //add left swipe gesture
             [gestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
             
         }
         
-        [self addSubview:yourLabel];
+        [self addSubview:arrowImageView];
         
         [self addGestureRecognizer:gestureRecognizer];
         
