@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03349F0E18F7087E0049D858 /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 03349F0D18F7087E0049D858 /* left_arrow.png */; };
+		03349F1018F708920049D858 /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 03349F0F18F708920049D858 /* right_arrow.png */; };
 		03AEAC9D18F3562D0013A70E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AEAC9C18F3562D0013A70E /* Foundation.framework */; };
 		03AEAC9F18F3562D0013A70E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AEAC9E18F3562D0013A70E /* CoreGraphics.framework */; };
 		03AEACA118F3562D0013A70E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AEACA018F3562D0013A70E /* UIKit.framework */; };
@@ -21,6 +23,10 @@
 		03AEACBE18F3562D0013A70E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AEACA018F3562D0013A70E /* UIKit.framework */; };
 		03AEACC618F3562D0013A70E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03AEACC418F3562D0013A70E /* InfoPlist.strings */; };
 		03AEACC818F3562D0013A70E /* SwipeAMoleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AEACC718F3562D0013A70E /* SwipeAMoleTests.m */; };
+		03AEACD318F35B6B0013A70E /* BarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AEACD218F35B6B0013A70E /* BarView.m */; };
+		03AEACD618F383890013A70E /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AEACD518F383890013A70E /* GameOverViewController.m */; };
+		03AEACD918F4C5C50013A70E /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AEACD818F4C5C50013A70E /* MainMenuViewController.m */; };
+		03AEACDC18F4C6BB0013A70E /* MenuBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AEACDB18F4C6BB0013A70E /* MenuBarView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03349F0D18F7087E0049D858 /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
+		03349F0F18F708920049D858 /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
 		03AEAC9918F3562D0013A70E /* SwipeAMole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeAMole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03AEAC9C18F3562D0013A70E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		03AEAC9E18F3562D0013A70E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +61,14 @@
 		03AEACC318F3562D0013A70E /* SwipeAMoleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SwipeAMoleTests-Info.plist"; sourceTree = "<group>"; };
 		03AEACC518F3562D0013A70E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		03AEACC718F3562D0013A70E /* SwipeAMoleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwipeAMoleTests.m; sourceTree = "<group>"; };
+		03AEACD118F35B6B0013A70E /* BarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarView.h; sourceTree = "<group>"; };
+		03AEACD218F35B6B0013A70E /* BarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarView.m; sourceTree = "<group>"; };
+		03AEACD418F383890013A70E /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
+		03AEACD518F383890013A70E /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
+		03AEACD718F4C5C50013A70E /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		03AEACD818F4C5C50013A70E /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		03AEACDA18F4C6BB0013A70E /* MenuBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuBarView.h; sourceTree = "<group>"; };
+		03AEACDB18F4C6BB0013A70E /* MenuBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuBarView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,11 +130,21 @@
 			children = (
 				03AEACAB18F3562D0013A70E /* AppDelegate.h */,
 				03AEACAC18F3562D0013A70E /* AppDelegate.m */,
+				03349F0F18F708920049D858 /* right_arrow.png */,
 				03AEACAE18F3562D0013A70E /* Main.storyboard */,
+				03349F0D18F7087E0049D858 /* left_arrow.png */,
 				03AEACB118F3562D0013A70E /* ViewController.h */,
 				03AEACB218F3562D0013A70E /* ViewController.m */,
 				03AEACB418F3562D0013A70E /* Images.xcassets */,
 				03AEACA318F3562D0013A70E /* Supporting Files */,
+				03AEACD118F35B6B0013A70E /* BarView.h */,
+				03AEACD218F35B6B0013A70E /* BarView.m */,
+				03AEACD418F383890013A70E /* GameOverViewController.h */,
+				03AEACD518F383890013A70E /* GameOverViewController.m */,
+				03AEACD718F4C5C50013A70E /* MainMenuViewController.h */,
+				03AEACD818F4C5C50013A70E /* MainMenuViewController.m */,
+				03AEACDA18F4C6BB0013A70E /* MenuBarView.h */,
+				03AEACDB18F4C6BB0013A70E /* MenuBarView.m */,
 			);
 			path = SwipeAMole;
 			sourceTree = "<group>";
@@ -230,6 +256,8 @@
 			files = (
 				03AEACB518F3562D0013A70E /* Images.xcassets in Resources */,
 				03AEACA718F3562D0013A70E /* InfoPlist.strings in Resources */,
+				03349F0E18F7087E0049D858 /* left_arrow.png in Resources */,
+				03349F1018F708920049D858 /* right_arrow.png in Resources */,
 				03AEACB018F3562D0013A70E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,8 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03AEACD318F35B6B0013A70E /* BarView.m in Sources */,
 				03AEACB318F3562D0013A70E /* ViewController.m in Sources */,
 				03AEACAD18F3562D0013A70E /* AppDelegate.m in Sources */,
+				03AEACDC18F4C6BB0013A70E /* MenuBarView.m in Sources */,
+				03AEACD618F383890013A70E /* GameOverViewController.m in Sources */,
+				03AEACD918F4C5C50013A70E /* MainMenuViewController.m in Sources */,
 				03AEACA918F3562D0013A70E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +488,7 @@
 				03AEACCD18F3562D0013A70E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03AEACCE18F3562D0013A70E /* Build configuration list for PBXNativeTarget "SwipeAMoleTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +497,7 @@
 				03AEACD018F3562D0013A70E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

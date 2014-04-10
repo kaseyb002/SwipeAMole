@@ -7,7 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BarView.h"
 
 @interface ViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UILabel *pointsLabel;
+
+@property (strong, nonatomic) NSTimer *timer;
+
+@property (nonatomic) int points;
+
+@property (nonatomic) NSTimeInterval *timeInterval;
+
+@property (nonatomic) int numberOfBarsOnScreen;
+
+@property (weak, nonatomic) IBOutlet UILabel *fadeMessageLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *averageIncrementLabel;
 
 @end
