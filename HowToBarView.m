@@ -27,14 +27,26 @@
         self.layer.cornerRadius = BAR_CORNER_RADIUS;
         
         //add left swipe text
-        UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(BAR_WIDTH / 4, BAR_HEIGHT / 4, BAR_WIDTH / 2, BAR_HEIGHT / 2)];
+        //UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(BAR_WIDTH / 4, BAR_HEIGHT / 4, BAR_WIDTH / 2, BAR_HEIGHT / 2)];
+        
+        //add left swipe text
+        UILabel *yourLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, BAR_WIDTH, BAR_HEIGHT)];
+        
+        [yourLabel setTextColor:[UIColor blackColor]];
+        
+        [yourLabel setBackgroundColor:[UIColor clearColor]];
+        
+        [yourLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 40.0f]];
+        
+        yourLabel.textAlignment = NSTextAlignmentCenter;
         
         UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler)];
         
         if(rightSwipe){
             
             //add rightswipe arrow image
-            arrowImageView.image = [UIImage imageNamed:@"right_arrow_thick.png"];
+            //arrowImageView.image = [UIImage imageNamed:@"right_arrow_thick.png"];
+            yourLabel.text = @"▶︎";
             
             //add rightswipe gesture
             [gestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
@@ -42,14 +54,16 @@
             
         } else {
             
-            arrowImageView.image = [UIImage imageNamed:@"left_arrow_thick.png"];
+            //arrowImageView.image = [UIImage imageNamed:@"left_arrow_thick.png"];
+            yourLabel.text = @"◀︎";
             
             //add left swipe gesture
             [gestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
             
         }
         
-        [self addSubview:arrowImageView];
+        //[self addSubview:arrowImageView];
+        [self addSubview:yourLabel];
         
         [self addGestureRecognizer:gestureRecognizer];
         

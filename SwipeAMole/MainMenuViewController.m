@@ -14,6 +14,7 @@
 
 #import "MainMenuViewController.h"
 #import "MenuBarView.h"
+#import "GameOverViewController.h"
 
 @interface MainMenuViewController ()
 
@@ -36,6 +37,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //iad stuff
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    self.bannerView = [[ADBannerView alloc]initWithFrame:
+                       CGRectMake(0, screenRect.size.height - 50, 320, 50)];
+    self.bannerView.delegate = self;
+    // Optional to set background color to clear color
+    [self.bannerView setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview: self.bannerView];
+    //end iad stuff
     
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
@@ -133,6 +144,8 @@
     [self performSegueWithIdentifier:@"Play" sender:nil];
 }
 
+
+
 #pragma mark - Helpers
 
 - (NSInteger)getRandomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max{
@@ -144,6 +157,24 @@
 - (float)getRandomDecimalBetween:(float)min maxNumber:(float)max{
     
     return ((float)arc4random() / ARC4RANDOM_MAX) * (max-min) + min;
+    
+}
+
+#pragma mark - AdViewDelegates
+
+-(void)bannerView:(ADBannerView *)banner
+didFailToReceiveAdWithError:(NSError *)error{
+    NSLog(@"Error loading");
+}
+
+-(void)bannerViewDidLoadAd:(ADBannerView *)banner{
+    NSLog(@"Ad loaded");
+}
+-(void)bannerViewWillLoadAd:(ADBannerView *)banner{
+    NSLog(@"Ad will load");
+}
+-(void)bannerViewActionDidFinish:(ADBannerView *)banner{
+    NSLog(@"Ad did finish");
     
 }
 

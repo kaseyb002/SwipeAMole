@@ -44,6 +44,7 @@
 
 #import "ViewController.h"
 #import "GameOverViewController.h"
+#import "MainMenuViewController.h"
 
 @interface ViewController (){
     
@@ -295,7 +296,34 @@
         
         vc.points = self.points;
         
+    } else if ([segue.destinationViewController isKindOfClass:[MainMenuViewController class]]){
+        
+        //I don't think we need to do anything do we??
+        
     }
+    
+    //stop the the timer and kill the game
+    self.lowerBoundInterval = INITIAL_LOWER_BOUND_INTERVAL;
+    
+    self.upperBoundInterval = INITIAL_UPPER_BOUND_INTERVAL;
+    
+    for(UIView *view in self.view.subviews){
+        
+        if([view isKindOfClass:[BarView class]]){
+            
+            [view removeFromSuperview];
+            
+        }
+        
+    }
+    
+    self.points = 0;
+    
+    self.pointsLabel.text = [NSString stringWithFormat:@"%d", self.points];
+    
+    self.fadeMessageLabel.text = @"Swipe Away!!!";
+    
+    [self.timer invalidate];
     
 }
 
@@ -314,6 +342,12 @@
     return number;
     
     //return min + arc4random() % (max - min + 1);
+    
+}
+
+- (IBAction)startOver:(UIButton *)sender {
+    
+    [self performSegueWithIdentifier:@"startOver" sender:nil];
     
 }
 

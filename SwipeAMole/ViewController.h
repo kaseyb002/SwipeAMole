@@ -10,6 +10,7 @@
 #import "BarView.h"
 
 @interface ViewController : UIViewController
+- (IBAction)startOver:(UIButton *)sender;
 
 @property (weak, nonatomic) IBOutlet UILabel *pointsLabel;
 
