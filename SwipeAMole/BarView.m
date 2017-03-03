@@ -116,7 +116,7 @@
         //add left swipe text
         UILabel *yourLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, BAR_WIDTH, BAR_HEIGHT)];
         
-        [yourLabel setTextColor:[UIColor blackColor]];
+        [yourLabel setTextColor:[UIColor whiteColor]];
         
         [yourLabel setBackgroundColor:[UIColor clearColor]];
         
@@ -125,6 +125,8 @@
         yourLabel.textAlignment = NSTextAlignmentCenter;
         
         UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler)];
+        
+        //UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler)];
         
         if(self.isRightSwipe){
             
@@ -150,6 +152,8 @@
         
         [self addGestureRecognizer:gestureRecognizer];
         
+        //[self addGestureRecognizer:tapRecognizer];
+        
     }
     
     return self;
@@ -160,19 +164,42 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"barSwiped" object:self];
     
-    [UIView beginAnimations:@"fade out" context:nil];
+//    [UIView beginAnimations:@"fade out" context:nil];
+//    
+//    [UIView setAnimationDuration:0.15];
+//    
+//    self.alpha = 0.0;
     
-    [UIView setAnimationDuration:0.15];
-    
-    self.alpha = 0.0;
+    [self alternateFadeAnimation];
     
     if(self.isGolden){
         
         //send post notification about bonus time
         [[NSNotificationCenter defaultCenter] postNotificationName:@"goldenBarSwiped" object:self];
+        
     }
     
-    [UIView commitAnimations];
+//    [UIView commitAnimations];
+    
+}
+
+- (void)alternateFadeAnimation{
+    
+    [UIView animateWithDuration:0.1
+                     animations:^{
+                         
+                         self.transform = CGAffineTransformMakeScale(2.0, 2.0);
+                         
+                         self.alpha = 0.0;
+                         
+                     }
+     
+                     completion:^(BOOL finished){
+                         
+                         //Animation completed
+                         [self removeFromSuperview];
+                         
+                     }];
     
 }
 

@@ -32,7 +32,7 @@
         //add left swipe text
         UILabel *yourLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, BAR_WIDTH, BAR_HEIGHT)];
         
-        [yourLabel setTextColor:[UIColor blackColor]];
+        [yourLabel setTextColor:[UIColor whiteColor]];
         
         [yourLabel setBackgroundColor:[UIColor clearColor]];
         
@@ -42,6 +42,8 @@
         
         UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler)];
         
+        //UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler)];
+        
         if(rightSwipe){
             
             //add rightswipe arrow image
@@ -50,7 +52,6 @@
             
             //add rightswipe gesture
             [gestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-            
             
         } else {
             
@@ -66,6 +67,7 @@
         [self addSubview:yourLabel];
         
         [self addGestureRecognizer:gestureRecognizer];
+        //[self addGestureRecognizer:tapRecognizer];
         
     }
     

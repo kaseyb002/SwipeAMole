@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *pointsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bestScoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *gotNewHighScoreLabel;
+@property (weak, nonatomic) IBOutlet UIButton *playAgainButton;
+@property (weak, nonatomic) IBOutlet UIButton *mainMenuButton;
 
 @property (strong, nonatomic) ADBannerView *bannerView;
 

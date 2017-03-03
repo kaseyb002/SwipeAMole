@@ -15,16 +15,17 @@
  */
 
 #define MAX_NUMBER_OF_BARS 5
+#define NUMBER_OF_TIMES_TO_TRY_DRAWING_BAR_WITHOUT_OVERLAPPING 20
 
 #define ARC4RANDOM_MAX 0x100000000
 
 #define BAR_WIDTH 150
 #define BAR_HEIGHT 50
 
-#define INITIAL_LOWER_BOUND_INTERVAL 0.75
-#define INITIAL_UPPER_BOUND_INTERVAL 1.00
+#define INITIAL_LOWER_BOUND_INTERVAL 0.80
+#define INITIAL_UPPER_BOUND_INTERVAL 1.0
 
-#define MINIMUM_LOWERBOUND 0.25
+#define MINIMUM_LOWERBOUND 0.30
 
 //levels based on points
 //#define LEVEL_1 10
@@ -41,6 +42,7 @@
 #define LEVEL_5 0.35
 
 #define GOLDEN_BAR_BONUS 5
+#define GOLDEN_BAR_SLOWDOWN_BONUS 0.10
 
 #import "ViewController.h"
 #import "GameOverViewController.h"
@@ -70,6 +72,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.averageIncrementLabel.hidden = YES;
     
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
@@ -134,7 +138,7 @@
         
     } else if(averageInterval <= LEVEL_5){
         
-        logDivisor = 3000;
+        logDivisor = 5000;
         
     }
 
@@ -215,8 +219,27 @@
     
     BarView *barView = [[BarView alloc] init];
     
-    [self.view addSubview:barView];
+    for(int i = 0; i < NUMBER_OF_TIMES_TO_TRY_DRAWING_BAR_WITHOUT_OVERLAPPING; i++){//try five times to make a bar that doesn't overlap any of the other bars
+        
+        if([self checkForOverlap:barView]){//if it does overlap, then draw a new bar
+            
+            NSLog(@"found overlap: %d", i);
+            
+            barView = [[BarView alloc] init];
+            
+        } else {//if it doesn't overlap, then quit now and draw the bar
+            
+            goto BAIL;
+            
+        }
+        
+    }
     
+    BAIL:
+    [self scaleAnimation:barView];
+    
+    [self.view addSubview:barView];
+
 }
 
 #pragma mark - Animation Dude
@@ -242,6 +265,65 @@
     [UIView commitAnimations];
     
 }
+
+- (void)scaleAnimation:(UIView *)view{
+    
+    // instantaneously make the image view small (scaled to 1% of its actual size)
+    view.transform = CGAffineTransformMakeScale(0.01, 0.01);
+    
+    [UIView animateWithDuration:0.05 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
+        // animate it to the identity transform (100% scale)
+        view.transform = CGAffineTransformMakeScale(1.10, 1.10);
+        
+    } completion:^(BOOL finished){
+        
+        // if you want to do something once the animation finishes, put it here
+        [UIView animateWithDuration:0.02 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            
+            // animate it to the identity transform (100% scale)
+            view.transform = CGAffineTransformMakeScale(0.90, 0.90);
+            
+        } completion:^(BOOL finished){
+            
+            // if you want to do something once the animation finishes, put it here
+            [UIView animateWithDuration:0.02 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                
+                // animate it to the identity transform (100% scale)
+                view.transform = CGAffineTransformMakeScale(1.05, 1.05);
+                
+            } completion:^(BOOL finished){
+                
+                // if you want to do something once the animation finishes, put it here
+                [UIView animateWithDuration:0.02 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                    
+                    // animate it to the identity transform (100% scale)
+                    view.transform = CGAffineTransformMakeScale(0.95, 0.95);
+                    
+                } completion:^(BOOL finished){
+                    
+                    // if you want to do something once the animation finishes, put it here
+                    [UIView animateWithDuration:0.02 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                        
+                        // animate it to the identity transform (100% scale)
+                        view.transform = view.transform = CGAffineTransformIdentity;
+                        
+                    } completion:^(BOOL finished){
+                        // if you want to do something once the animation finishes, put it here
+
+                        
+                    }];
+                    
+                }];
+                
+            }];
+        
+        }];
+        
+    }];
+    
+}
+
 
 #pragma mark - Setup Notifications
 
@@ -274,7 +356,7 @@
     
     self.points = self.points + GOLDEN_BAR_BONUS;
     
-    float amountToIncrement = [self getRandomDecimalBetween:0.02 maxNumber:0.05];
+    float amountToIncrement = GOLDEN_BAR_SLOWDOWN_BONUS;
     
     self.lowerBoundInterval = self.lowerBoundInterval + amountToIncrement;
     
@@ -328,6 +410,28 @@
 }
 
 #pragma mark - Helpers
+
+- (BOOL)checkForOverlap:(BarView *)barToDraw{
+    
+    for(UIView *view in self.view.subviews){
+        
+        if([view isKindOfClass:[BarView class]]){
+            
+            BarView *barView = (BarView *)view;
+            
+            if(CGRectIntersectsRect(barToDraw.frame, barView.frame)){
+                
+                return YES;
+                
+            }
+            
+        }
+        
+    }
+    
+    return NO;
+    
+}
 
 - (float)getRandomDecimalBetween:(float)min maxNumber:(float)max{
     

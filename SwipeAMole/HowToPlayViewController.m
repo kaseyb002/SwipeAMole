@@ -77,7 +77,7 @@
         //change instruction text
         [self fadeAnimation:self.instructionLabel yesFadeInNoFadeOut:NO beginningAlpha:1.0 endingAlpha:0.0 animationDuration:0.5];
         
-        self.instructionLabel.text = @"that's it! \n \n just do not to let 5 bars get on the screen at once";
+        self.instructionLabel.text = @"that's it! \n \n just do not let 5 bars get on the screen at once";
         
         [self fadeAnimation:self.instructionLabel yesFadeInNoFadeOut:YES beginningAlpha:0.0 endingAlpha:1.0 animationDuration:0.5];
         
